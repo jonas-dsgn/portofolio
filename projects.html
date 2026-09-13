@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PROJECTS | Jonas Nettel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<main class="projects-overview-page">
+  <section class="projects-overview">
+    <div class="container">
+      <p class="overview-kicker">JONAS NETTEL / WORK</p>
+      <h1 class="overview-title">All Projects</h1>
+      <label class="project-search-label" for="projectSearch">Search Projects</label>
+      <input class="project-search" id="projectSearch" type="search" placeholder="Search by title or collection" autocomplete="off">
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox" tabindex="-1">
+  <div class="lightbox-content">
+    <button class="lightbox-nav lightbox-prev" id="previousImage" type="button" aria-label="Previous image">&larr;</button>
+    <button class="lightbox-close" id="closeLightbox" type="button" aria-label="Close image viewer">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Fullsize fashion">
+    <button class="lightbox-nav lightbox-next" id="nextImage" type="button" aria-label="Next image">&rarr;</button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script src="./js/site.js"></script>
+<script src="./js/projects.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>
