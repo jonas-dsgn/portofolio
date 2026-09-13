@@ -1,0 +1,380 @@
+================================================================
+DESIGN REFERENCE — JONAS NETTEL PORTFOLIO
+================================================================
+Version: 1.0
+Source: index.html (cleaned build)
+Purpose: Style system summary for AI reproduction
+================================================================
+
+
+----------------------------------------------------------------
+1. STYLE IDENTITY
+----------------------------------------------------------------
+- Category:       Minimal / Editorial / Fashion
+- Mood:           Dark-contrast, raw, clean, high-end streetwear
+- Aesthetic:      Brutalist-lite — strong typography, zero decoration,
+                  restrained color palette, uppercase-dominant text
+- Inspiration:    Fashion lookbooks, editorial photography portfolios
+- Key trait:      The design stays completely out of the way of the
+                  photography. Typography does all the heavy lifting.
+- The custom crosshair cursor was removed from the current implementation.
+
+
+----------------------------------------------------------------
+2. COLOR SYSTEM
+----------------------------------------------------------------
+Background (page body):   #D6D6D6   — warm mid-gray
+Background (hero):        #202020   — near-black charcoal
+Background (lightbox):    rgba(0,0,0,0.92) — near-opaque black
+
+Text — primary:           #111111   — soft black (not pure #000)
+Text — secondary:         #333533   — dark warm gray (body copy)
+Text — hero/overlay:      rgba(255,255,255,0.85) — off-white on dark bg
+Text — hero subtitle:     rgba(255,255,255,0.70) — dimmed white
+Text — footer:            #aaa      — light gray
+
+Accent:                   #333533   — same as text-secondary; used for
+                                      borders, section title bar, link underlines
+Border:                   #333533   — consistent single border color throughout
+Card background:          #D6D6D6   — same as page body (flat, no elevation)
+Image placeholder bg:     #f5f5f5   — light neutral for unloaded images
+
+RULE: The palette is intentionally achromatic. No color pops.
+      Contrast is achieved through dark-on-gray and white-on-dark,
+      never through hue. Saturation = 0 everywhere.
+
+
+----------------------------------------------------------------
+3. TYPOGRAPHY
+----------------------------------------------------------------
+Font family:     'Geist', sans-serif (Google Fonts)
+                 Weights loaded: 400, 500, 600, 700, 800, 900
+
+Base body:
+  font-size:     browser default (~16px)
+  font-weight:   400
+  line-height:   1.4
+  color:         #111111
+
+Headings / all display text:
+  font-weight:   700
+  letter-spacing: -0.02em
+  text-transform: UPPERCASE
+
+Hero title (H1):
+  font-size:     clamp(3.5rem, 15vw, 15rem)  — fluid, very large
+  font-weight:   800
+  line-height:   1.05
+  letter-spacing: -0.07em  — extremely tight, display-only tracking
+  color:         #D6D6D6 (light gray on dark hero bg)
+
+Section titles (H2):
+  font-size:     clamp(2rem, 6vw, 3.2rem)  — fluid
+  font-weight:   700
+  margin-bottom: 2.5rem
+  letter-spacing: -0.01em
+  decoration:    4px solid accent bar on left edge (border-left)
+
+About name (H3):
+  font-size:     1.8rem
+  font-weight:   700
+
+Project card title:
+  font-size:     1.2rem
+  font-weight:   700
+  letter-spacing: -0.3px
+
+Project caption:
+  font-size:     0.8rem
+  font-weight:   400
+  text-transform: UPPERCASE
+  letter-spacing: 1px
+  color:         text-secondary
+
+Hero subtitle / label:
+  font-size:     1rem
+  font-weight:   400
+  letter-spacing: 6px
+  text-transform: UPPERCASE
+
+Logo:
+  font-size:     1.4rem
+  font-weight:   700
+  text-transform: UPPERCASE
+  letter-spacing: -0.5px
+
+Nav links:
+  font-size:     0.9rem
+  font-weight:   500
+  text-transform: UPPERCASE
+
+Body / bio copy:
+  font-size:     1rem
+  font-weight:   400
+  line-height:   1.6
+  color:         text-secondary (#333533)
+
+Footer:
+  font-size:     0.7rem
+  text-transform: UPPERCASE
+  color:         #aaa
+
+Mobile nav links:
+  font-size:     1.4rem
+  font-weight:   600
+  text-transform: UPPERCASE
+
+Social links:
+  font-size:     1rem
+  font-weight:   500
+  text-transform: UPPERCASE
+  letter-spacing: 1px
+
+Lightbox caption:
+  font-size:     0.85rem
+  text-transform: UPPERCASE
+  letter-spacing: 1px
+  color:         white
+
+RULE: Uppercase is the default for ALL interface labels, nav items,
+      headings, and metadata. Sentence case only in long body copy (bio).
+
+
+----------------------------------------------------------------
+4. LAYOUT SYSTEM
+----------------------------------------------------------------
+Container:
+  max-width:     1400px
+  margin:        0 auto
+  padding:       0 2rem (desktop), 0 1.5rem (mobile)
+
+Header inner:
+  max-width:     1440px
+  margin:        0 auto
+  padding:       1.2rem 2rem
+
+Section padding:
+  desktop:       6rem 0 (top/bottom)
+  mobile:        4rem 0
+
+Hero:
+  min-height:    90vh
+  margin-top:    70px (header height offset)
+  display:       flex, align-items center, justify-content flex-start
+  text:          left-aligned (desktop), center (mobile)
+
+Projects grid:
+  display:       CSS Grid
+  columns:       repeat(auto-fill, minmax(320px, 1fr))
+  gap:           2.5rem (desktop), 2rem (mobile)
+
+About section:
+  display:       flex, flex-wrap wrap
+  gap:           3rem
+  align-items:   center
+  justify-content: space-between
+  about-text:    flex 1.5
+  about-portrait: flex 1
+  mobile:        flex-direction column-reverse
+
+Nav bar:
+  display:       flex, justify-content space-between, align-items center
+  nav links:     display flex, gap 2.5rem
+
+Social links:
+  display:       flex, justify-content center, gap 2.5rem, flex-wrap wrap
+
+Footer:
+  display:       flex, flex-direction column, align-items center, gap 0.5rem
+
+Brands track:
+  display:       flex, width max-content (infinite scroll)
+  brand items:   margin 0 3.5rem each
+
+RULE: Layouts use either CSS Grid (projects) or Flexbox (everything else).
+      No floats, no absolute positioning for content layout.
+      Generous vertical whitespace — sections breathe at 6rem.
+
+
+----------------------------------------------------------------
+5. COMPONENT STYLING
+----------------------------------------------------------------
+NAVIGATION (desktop):
+  position:      fixed, top 0, full-width
+  background:    #D6D6D6 (matches body)
+  backdrop-filter: blur(10px)
+  border-bottom: 1px solid #333533
+  link hover:    opacity 0.6
+
+NAVIGATION (mobile):
+  Hamburger:     3 bars, 26×2px, gap 6px
+  Mobile panel:  position fixed, slides from right (-100% → 0)
+                 width 75%, max 320px, full viewport height
+                 padding 6rem 2rem 2rem (accounts for header)
+                 background: #D6D6D6
+                 box-shadow: -5px 0 20px rgba(0,0,0,0.05)
+  Overlay:       full screen, rgba(0,0,0,0.3), backdrop-filter blur(3px)
+  Link style:    border-bottom 1px solid #333533 per link
+
+PROJECT CARDS:
+  background:    #D6D6D6 (flat, same as page — no elevation/shadow)
+  cursor:        pointer
+  image wrapper: aspect-ratio 4/5, overflow hidden
+  image:         object-fit cover, 100% width/height
+  info area:     padding 1.2rem 0.5rem
+  entry animation: fadeUp 0.7s forwards, staggered via --order CSS var
+  hover:         translateY(-8px) + scale(1.02)
+  img hover:     scale(1.03) with 0.6s ease transition
+
+LIGHTBOX:
+  position:      fixed, full screen, z-index 2000
+  background:    rgba(0,0,0,0.92)
+  backdrop-filter: blur(8px)
+  visibility:    hidden/opacity 0 → visible/opacity 1 (0.3s transition)
+  image:         max 90vw × 85vh, object-fit contain
+                 box-shadow: 0 20px 40px rgba(0,0,0,0.3), border-radius 2px
+  close button:  positioned top: -40px right: 0, white, 2.5rem, weight 300
+  caption:       positioned bottom: -40px left: 0, white, 0.85rem uppercase
+
+PORTRAIT IMAGE:
+  shape:         circle (border-radius 50%)
+  max-width:     280px (desktop), 220px (mobile)
+  aspect-ratio:  1/1, object-fit cover
+  border:        3px solid white
+  outline:       1px solid #333533
+  hover:         scale(1.02) + box-shadow 0 25px 40px -15px rgba(0,0,0,0.2)
+
+BRAND LOGOS:
+  height:        28px fixed, width auto
+  filter:        grayscale(100%), opacity 0.7
+  hover:         grayscale(0%), opacity 1, scale(1.05)
+  track:         CSS animation scrollBrands 30s linear infinite
+  pause:         animation-play-state paused on brands-wrapper hover
+
+SOCIAL LINKS:
+  style:         uppercase text links, no underline by default
+  hover:         border-bottom 1px solid #333533 + opacity 0.7
+
+BUTTONS (lightbox close only — no general buttons exist):
+  background:    none, border none
+  color:         white
+  font-size:     2.5rem, weight 300
+
+
+----------------------------------------------------------------
+6. BORDER SYSTEM
+----------------------------------------------------------------
+Border color:     #333533 (single color used everywhere)
+Border thickness: 1px (all dividers, nav, footer, mobile links)
+                  4px (section title left-bar accent only)
+                  3px white (portrait image ring)
+Border radius:
+  - Lightbox image:   2px (barely rounded)
+  - Portrait photo:   50% (full circle)
+  - All other elements: 0 (sharp, no rounding)
+
+RULE: The design uses almost no border-radius. Sharpness is intentional.
+      The only exception is the circular portrait photo.
+
+
+----------------------------------------------------------------
+7. SHADOWS & EFFECTS
+----------------------------------------------------------------
+Box shadows:
+  Lightbox image:   0 20px 40px rgba(0,0,0,0.3)
+  Portrait hover:   0 25px 40px -15px rgba(0,0,0,0.2)
+  Mobile menu:      -5px 0 20px rgba(0,0,0,0.05) (very subtle)
+
+Blur effects:
+  Header:           backdrop-filter blur(10px)
+  Lightbox:         backdrop-filter blur(8px)
+  Mobile overlay:   backdrop-filter blur(3px)
+
+Hover transitions:
+  Nav links:        opacity 0.2s
+  Project cards:    all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)
+  Project image:    transform 0.6s ease
+  Portrait:         transform 0.4s ease, box-shadow 0.4s ease
+  Social links:     all 0.2s
+  Brand logos:      all 0.3s ease
+  Lightbox:         opacity 0.3s ease, visibility 0.3s
+
+Scroll reveal:
+  Enter state:      opacity 0, translateY(35px)
+  Revealed state:   opacity 1, translateY(0)
+  Transition:       opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1),
+                    transform 0.7s ease
+  Trigger:          IntersectionObserver threshold 0.2
+
+About section fade:
+  Same pattern — opacity 0 + translateY(30px) → visible class
+  Portrait has 0.2s delay relative to text
+
+Card entry animation:
+  @keyframes fadeUp — staggered via CSS var --order × 0.1s delay
+
+----------------------------------------------------------------
+8. RESPONSIVE BEHAVIOR
+----------------------------------------------------------------
+Single breakpoint:  768px (mobile ≤ 768px / desktop ≥ 769px)
+
+Mobile changes:
+  - Container padding:    2rem → 1.5rem
+  - Section padding:      6rem 0 → 4rem 0
+  - Hero title:           fluid clamp → hard 3.5rem
+  - Hero alignment:       left → center
+  - Projects grid:        multi-column → 1 column, gap 2rem
+  - About grid:           row → column-reverse (portrait above text)
+  - Section title:        left border removed, text-align center
+  - Portrait image:       280px max → 220px max
+  - Social links gap:     2.5rem → 1.5rem
+  - Desktop nav:          hidden (display none)
+  - Hamburger:            shown (display flex)
+  - Default cursor:       restored (cursor: auto)
+  - Mobile menu panel:    activated (slides from right)
+
+Desktop only (≥ 769px):
+  - Mobile menu and overlay: display none
+
+
+----------------------------------------------------------------
+9. ANIMATION SUMMARY
+----------------------------------------------------------------
+fadeInUp:      Hero content on page load — 1s ease-out
+fadeUp:        Project cards on render — 0.7s forwards, staggered
+scrollBrands:  Infinite marquee — 30s linear, translateX 0 → -50%
+scroll-reveal: On viewport enter — 0.8s opacity + 0.7s transform
+about visible: On viewport enter — 0.7s, portrait delayed 0.2s
+
+
+----------------------------------------------------------------
+10. REPRODUCTION RULES FOR AI
+----------------------------------------------------------------
+When recreating this style, follow these non-negotiable rules:
+
+1. Font:         Geist only. No substitutes. Load all weights.
+2. Color:        Achromatic palette only. #D6D6D6 body, #111111 text,
+                 #333533 for all accents/borders. No color.
+3. Text:         UPPERCASE everywhere except long body copy.
+4. Borders:      1px #333533, sharp corners (0 radius) on all containers.
+5. Cards:        Flat — same background as page. No shadow, no elevation.
+6. Spacing:      Generous. Sections at 6rem vertical padding minimum.
+7. Typography:   Tight letter-spacing on headings (-0.02em to -0.07em).
+                 Hero title must be very large and bold (800 weight).
+8. Hover states: Always subtle. Translate up + slight scale on cards.
+                 Opacity reduction on nav links. Never abrupt.
+9. Mobile:       Single breakpoint at 768px. Hamburger menu required.
+10. Cursor:      Use the standard cursor on all devices.
+
+ANTI-PATTERNS (do NOT use in this style):
+  - No rounded cards or pill buttons
+  - No colorful accents or gradients
+  - No drop shadows on layout elements (only photos)
+  - No Inter, Roboto, or system fonts
+  - No centered hero on desktop
+  - No filled/background buttons
+  - No card elevation via shadow
+
+================================================================
+END OF DESIGN REFERENCE
+================================================================
