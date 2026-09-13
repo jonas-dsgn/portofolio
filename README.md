@@ -1,20 +1,22 @@
 # Jonas Nettel Portfolio
 
-A minimal editorial portfolio website for Jonas Nettel's photography, fashion, and digital artwork.
+An editorial portfolio website for Jonas Nettel's photography, fashion work, and digital art. The site uses a restrained grayscale palette, large typography, sharp borders, and image-led layouts to keep the focus on the work.
 
-## Features
+## Site
 
-- Responsive portfolio homepage
-- Featured projects section
-- Complete project overview with search
-- Dedicated project detail pages
-- Multi-image project galleries
-- Lightbox with desktop arrows, keyboard controls, and mobile swipe navigation
-- Responsive mobile navigation
-- Animated brand marquee
-- Client-side watermarking tool for photos
+The homepage presents a short introduction, three selected projects, an About section, a rotating selection of brands, and an Instagram contact link. The complete project archive is available through a separate overview page with search and dedicated detail pages for individual projects.
 
-## Project Structure
+Project pages combine descriptive information, location, project type, tools, Instagram credits, and image galleries. Galleries support multiple images with lightbox navigation, keyboard controls, and touch swiping on mobile devices.
+
+The interface is responsive and includes animated typography, scroll reveals, mobile navigation, and a continuously moving brand marquee. The visual language is intentionally minimal, monochrome, and fashion-editorial.
+
+## Private Watermark Tool
+
+The repository also contains an independent, unlinked watermarking tool at `tools/watermark.html`. It runs entirely in the browser and is not part of the public portfolio navigation.
+
+The tool can process one or multiple photos, apply either Jonas Nettel watermark SVG, adjust watermark color and size, preserve the original image dimensions, and export the processed files locally. It uses the Canvas API and does not upload images to an external service.
+
+## Architecture
 
 ```text
 .
@@ -37,65 +39,7 @@ A minimal editorial portfolio website for Jonas Nettel's photography, fashion, a
 └── docs/                      # Design reference documentation
 ```
 
-## Run Locally
-
-This is a static website and does not require a development server or build step.
-
-Open `index.html` directly in a browser, or use a local static server if your browser restricts local file access.
-
-The private watermark tool is available at:
-
-```text
-tools/watermark.html
-```
-
-It runs entirely in the browser. Uploaded photos are not sent to a server.
-
-## GitHub Pages Deployment
-
-1. Push the repository to GitHub.
-2. Open the repository's **Settings**.
-3. Go to **Pages**.
-4. Select the deployment source and branch.
-5. Use the repository root as the site folder.
-6. Save the settings.
-
-GitHub Pages will use `index.html` as the homepage.
-
-## Adding a Project
-
-Add the project metadata to `js/projects.js`:
-
-```js
-{
-  id: 5,
-  title: "#5 PROJECT TITLE",
-  caption: "Collection / 2026",
-  type: "Photography / Fashion editorial",
-  location: "Austria",
-  tools: [
-    { name: "Camera name", logo: "canon.svg" }
-  ],
-  socials: [
-    { handle: "@example", role: "Photographer" }
-  ],
-  description: "A short description of the project.",
-  images: [
-    "./images/project-5.jpeg"
-  ]
-}
-```
-
-Then create a matching detail page in `projects/` using the existing project page pattern.
-
-## Image Guidelines
-
-- Keep image filenames lowercase and use hyphens.
-- Use relative paths only.
-- Optimize large images before uploading them.
-- Add additional images to a project's `images` array to enable gallery navigation.
-
-## Technologies
+## Technology
 
 - HTML
 - CSS
@@ -103,10 +47,10 @@ Then create a matching detail page in `projects/` using the existing project pag
 - Canvas API for watermark exports
 - GitHub Pages
 
-No framework, build system, npm dependency, or backend service is required.
+The project is a static website with no framework, build system, npm dependency, backend, or server-side processing. It is structured for direct deployment through GitHub Pages, with `index.html` as the root entry point and relative asset paths throughout.
 
-## Notes
+## Repository Notes
 
-- The watermark tool is intentionally not linked from the main website navigation.
+- The watermark tool is intentionally separate from the public portfolio experience.
 - The original watermark SVG files are preserved in `assets/logos/`.
-- External Google Fonts are loaded from Google Fonts when network access is available.
+- Google Fonts are loaded externally when network access is available.
